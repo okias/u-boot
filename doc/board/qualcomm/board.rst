@@ -38,6 +38,31 @@ with appended dtb, so let's mimic linux to satisfy stock bootloader.
 Boards
 ------
 
+blueline
+^^^^^^^^
+The blueline is a Google Pixel 3 phone,
+based on the Qualcomm SDM845 SoC.
+
+This device is supported by the common qcom_defconfig in combination
+with google-pixel3.config config fragment.
+
+The DTB is called "sdm845-google-blueline.dtb"
+
+More information can be found on the `Google Pixel 3 page`_.
+
+crosshatch
+^^^^^^^^^^
+The crosshatch is a Google Pixel 3 XL phone,
+based on the Qualcomm SDM845 SoC.
+
+This device is supported by the common qcom_defconfig in combination
+with google-pixel3.config config fragment.
+
+The DTB is called "sdm845-google-crosshatch.dtb"
+
+More information can be found on the `Google Pixel 3 page`_.
+
+
 starqlte
 ^^^^^^^^
 
@@ -131,5 +156,6 @@ Other devices with boot image version 2 can be built like this example::
 	fastboot flash boot boot.img
 	fastboot erase dtbo
 
+.. _Google Pixel 3 page: https://en.wikipedia.org/wiki/Pixel_3
 .. _Samsung S9 page: https://en.wikipedia.org/wiki/Samsung_Galaxy_S9
 .. _DragonBoard 845c page: https://www.96boards.org/product/rb3-platform/
