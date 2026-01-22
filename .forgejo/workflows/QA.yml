@@ -6,16 +6,38 @@ on: [pull_request]
 jobs:
   checkpatch:
     name: checkpatch
-    runs-on: codeberg-medium
+    runs-on: codeberg-small
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 250
       - name: Run checkpatch review
-        run: |
-          ./scripts/$CHECKPATCH_COMMAND
+        uses: https://github.com/okias/checkpatch-action@master
         env:
           CHECKPATCH_COMMAND: checkpatch.pl --no-tree --strict
+
+#  checkpatch:
+#    name: checkpatch
+#    runs-on: codeberg-small
+#    steps:
+#      - uses: actions/checkout@v6
+#        with:
+#          fetch-depth: 250
+#      - name: Run checkpatch review
+#        env:
+#          CHECKPATCH_FLAGS: -q --terse --no-summary --mailback --showfile
+#        run: |
+#          set -o xtrace
+#          hashes=$(git log $FORGEJO_BASE_REF...HEAD --pretty="%H" --reverse | xargs)
+#          for hash in $hashes; do
+#            check_out=$(perl scripts/checkpatch.pl $CHECKPATCH_FLAGS -g $hash)
+#            if [ -z "$check_out" ]; then
+#              echo "  ✅  $hash  -  $(git show -s --format=%s $hash)"
+#            else
+#              echo "  ⚠️   $hash  -  $(git show -s --format=%s $hash)"
+#              echo "$check_out[@]"
+#            fi
+#          done
 
 #  yamllint:
 #    name: yamllint
