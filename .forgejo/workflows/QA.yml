@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 250
       - name: Run checkpatch review
-        uses: https://github.com/okias/checkpatch-action@master
+        uses: https://github.com/okias/checkpatch-action@996b4834714c10588aad9ad4c77f7b9666d6f131
         env:
           CHECKPATCH_COMMAND: checkpatch.pl --no-tree --strict
 
